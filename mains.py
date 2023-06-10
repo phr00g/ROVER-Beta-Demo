@@ -10,11 +10,7 @@ import threading
 from pgmap import *
 
 
-        
-
-
-
-
+       
 
 
 # #game start
