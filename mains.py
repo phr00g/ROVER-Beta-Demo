@@ -33,13 +33,13 @@ print("Don't worry, your ROVER is currently at the landing dock. And by the way,
 #game loop, DECLARE PLAYER STARTING LOCATION BEFORE ENTERING GAMELOOP
 me.location = map_array[0][0] 
 
-clock = pygame.time.Clock()
+
 
 
 
 running = True
 flash_timer = 0
-flash_interval = 500  # milliseconds
+flash_interval = 500  # millisecond
 
 
 
@@ -72,7 +72,7 @@ while gamegoing:
         print('\n')
         command = command.split()
         verb = command[0]
-        
+
                
 
 
