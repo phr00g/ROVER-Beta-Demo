@@ -41,26 +41,6 @@ running = True
 flash_timer = 0
 flash_interval = 500  # milliseconds
 
-# while running:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running = False
-
-#     # # Flash the player's location
-#     # current_time = pygame.time.get_ticks()
-
-#     # if current_time - flash_timer >= flash_interval:
-#     #     flash_timer = current_time
-#     #     player_location = map_array[1][1] 
-
-#     # Draw the map
-#     draw_map()
-
-#     # Control the frame rate
-#     clock.tick(60)
-
-
-
 
 
 while gamegoing:
@@ -92,9 +72,8 @@ while gamegoing:
         print('\n')
         command = command.split()
         verb = command[0]
-
-        #handles commands without any verbs
         
+               
 
 
         #handles location changing and failure to do so   special case for walking 
@@ -129,15 +108,13 @@ while gamegoing:
             continue
         
 
-        #here we need to accept verbs and then execute class based actions, verbs instructios should not be in command loop
-        #if len(command) == 1, ==2, ==3 and so forth for different verb types
-        #consider a verb handler methods for each verb type
+        
         
         #finds number of tokens in command and sends command array to appropraite handler method    
         tokenhandler(command)
         
 
-        #add funcitnoality that checks if plahyer's locaiton has changed, and breaks from command loop
+        
 
         #print empty line
         print("\n")

@@ -27,7 +27,7 @@ def pygo():
     clock = pygame.time.Clock()
     running  =True
     window.fill(BLACK)
-    print(1111)
+    
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
