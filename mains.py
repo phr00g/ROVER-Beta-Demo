@@ -2,6 +2,16 @@
 from classes import *
 from locations import *
 import random
+import pygame
+import time
+import threading
+from pgmap import *
+
+
+
+    
+
+
 
 
 
@@ -90,7 +100,28 @@ def tokenhandler(command):
 
 
 
+#testing torch object
 
+# torch = item('torch')
+# torch.name = 'torch'
+# torch.isholdable = True
+# #add pickup method to torch
+# torch.verbs['pickup'] = pickup
+# torch.verbs['drop'] = drop
+# #print(torch.verbs)
+# #torch pickup printed response
+
+
+# starting_loc = location()   
+# starting_loc.name = 'tutorial'
+# starting_loc.greeting = 'You are surrouended by sand and the air is uncomfortably dry. You feel a bead of sweat dripping down your temple. A mahogany log cabin creaks with age. To the east you see a small castle.'
+
+# small_castle = location()
+# small_castle.greeting = 'You walk over the castle bridge and above the moat, a hungry and very ugly hippo gives you a wink that unsettles your stomach. It is too dark to see much, but there is a small fire next to a torch.'
+
+
+# #adds torch item to small castle locations dictonary
+# small_castle.inventory[torch.name] = torch
 
 # #game start
 
@@ -106,7 +137,36 @@ print("Please locate and test (three) suitable excavation sites, and return your
 print("Don't worry, your ROVER is currently at the landing dock. And by the way, just in case your manual isn't fully up to date, to test whether your current location is suitable for drilling, just type 'test_soil'.\n")
 
 #game loop, DECLARE PLAYER STARTING LOCATION BEFORE ENTERING GAMELOOP
-me.location = map_array[0][0] #goes to [9][9] or should
+me.location = map_array[0][0] 
+
+clock = pygame.time.Clock()
+
+
+
+running = True
+flash_timer = 0
+flash_interval = 500  # milliseconds
+
+# while running:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             running = False
+
+#     # # Flash the player's location
+#     # current_time = pygame.time.get_ticks()
+
+#     # if current_time - flash_timer >= flash_interval:
+#     #     flash_timer = current_time
+#     #     player_location = map_array[1][1] 
+
+#     # Draw the map
+#     draw_map()
+
+#     # Control the frame rate
+#     clock.tick(60)
+
+
+
 
 
 while gamegoing:
@@ -131,6 +191,7 @@ while gamegoing:
 
     #begin command loop
     while commanding:
+        
         #consider refresh / command tick method
         
         command = input("EXECUTE COMMAND:").lower()
@@ -180,12 +241,12 @@ while gamegoing:
         
         #finds number of tokens in command and sends command array to appropraite handler method    
         tokenhandler(command)
+        
 
         #add funcitnoality that checks if plahyer's locaiton has changed, and breaks from command loop
 
         #print empty line
         print("\n")
-
 
 
 

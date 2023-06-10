@@ -58,6 +58,7 @@ class NPC(person):
 
 #instantiations, we must creater player controller object here
 gamegoing = True
+global me
 me = person()
 
 

@@ -1,5 +1,6 @@
 from classes import *
 from items import *
+import pygame
 
 #special case and order for starting location
 
@@ -13,10 +14,12 @@ from items import *
 
 
 
-width = 10
-height = 10
+width = 9
+height = 9
 
 # Create a 2D array of Location objects
+#must be global becasue it is used in pygame thread
+global map_array
 map_array = [[location(x, y) for y in range(height)] for x in range(width)]
 
 # Assign the up, down, left, and right attributes for each Location object
