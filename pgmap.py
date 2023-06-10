@@ -8,6 +8,7 @@ import threading
 
 def pygo():
     pygame.init()
+    clock = pygame.time.Clock()
     
 
 # Set the dimensions of the window
