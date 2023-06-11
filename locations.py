@@ -37,7 +37,50 @@ for x in range(width):
             temp_location.east = map_array[x + 1][y]
 
     
-#create all PERMA
+#create all PERMANENT disconnections, remember iteration later so dont be redundant!
+#[col][row]
+
+#top left corner
+map_array[7][0].west = None
+
+#tar pit
+map_array[5][1].west = None
+map_array[5][1].north = None
+map_array[6][1].east = None
+map_array[6][1].north = None
+
+map_array[5][2].west = None
+map_array[5][2].south = None
+map_array[6][2].east = None
+map_array[6][2].south = None
+
+
+
+
+
+
+
+
+
+
+
+#iterates through all locations and if can be left, but not entered from same direciton, assigns that direction None
+#it fixes the map and prevent a lot of work
+for row in map_array:
+    for loc in row:
+
+        #if i can go up, but then not go back down, i will no longer be able to go up
+        if loc.north != None and loc.north.south != loc:
+            loc.north = None
+
+        if loc.south != None and loc.south.north != loc:
+            loc.south = None
+
+        if loc.west != None and loc.west.east != loc:
+            loc.west = None
+
+        if loc.east != None and loc.east.west != loc:
+            loc.east = None
 
 
 
