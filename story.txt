@@ -11,6 +11,7 @@ the red square indicated your current location
 
 You are told that there may or may not be life on the planet,
 but if there is, it is definitely not at all intelligent
+You are told to NOT INTERACT WITH ANY LIVING THING and just ignore them 
 
 You are told to find the x drillign sites, and retunr to your rover's landing afterwards
 
