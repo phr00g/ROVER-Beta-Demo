@@ -24,8 +24,8 @@ class location:
         self.south = None
         self.west = None
         self.east = None
-        self.attached = [self.north,self.south,self.east,self.west]
-        self.hasmineral = None
+        #explanations for inabliltiy to travel in direction: whynot['north'] = the door is locked
+        self.whynot = {}
         self.persons = {} #says who is in location     person.name:person
 
 

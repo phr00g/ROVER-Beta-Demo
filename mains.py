@@ -27,7 +27,8 @@ print("Please locate and test (three) suitable excavation sites, and return your
 print("Don't worry, your ROVER is currently at the landing dock. And by the way, just in case your manual isn't fully up to date, to test whether your current location is suitable for drilling, just type 'test_soil'.\n")
 
 #game loop, DECLARE PLAYER STARTING LOCATION BEFORE ENTERING GAMELOOP
-me.location = map_array[0][0] 
+#                  [column][row]
+me.location = map_array[3][4] 
 
 
 
@@ -83,6 +84,10 @@ while gamegoing:
             # me.location.west == None
             if command[1] not in loc_dict  or loc_dict[command[1]] == None :
                 print("You can not go {}".format(command[1]))
+                
+                if command[1] in me.location.whynot:
+                    print(me.location.whynot[command[1]])
+
                 continue
 
             #player goes in new direciton --> update player locaiton --> end command loop

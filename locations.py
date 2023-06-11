@@ -37,6 +37,7 @@ for x in range(width):
             temp_location.east = map_array[x + 1][y]
 
     
+#create all PERMA
 
 
 
