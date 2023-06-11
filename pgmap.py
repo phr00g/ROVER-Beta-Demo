@@ -12,8 +12,8 @@ def pygo():
     
 
 # Set the dimensions of the window
-    window_width = 550
-    window_height = 550
+    window_width = 475
+    window_height = 535
     tile_size = 50
     space_size = 10
     

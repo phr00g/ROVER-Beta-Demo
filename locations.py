@@ -14,7 +14,7 @@ import pygame
 
 
 
-width = 9
+width = 8
 height = 9
 
 # Create a 2D array of Location objects
