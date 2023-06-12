@@ -1,5 +1,5 @@
 from classes import *
-
+from methods import *
 torch = item('torch')
 torch.verbs['pickup'] = pickup
 torch.verbs['drop'] = drop
