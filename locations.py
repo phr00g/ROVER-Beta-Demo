@@ -148,6 +148,7 @@ To the south is the center of a massive crater.    There appears to be an energy
 
 landing.desc = "your landing site"
 
+#update method when we want to REMOVE part of greeting string and do other stuff, locations get updated when items are picked up
 def landing_update():
     landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
 to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
@@ -173,21 +174,38 @@ The landing dock is south of here. '''
 fishcave = map_array[4][3]
 #there is a person here
 roger = NPC('alien')
+roger.verbs['drill'] = drill
+roger.inventory['crystal'] = crystal2
+
+
+
 fishcave.inventory['alien'] = roger
 
 def fishcave_event():
     message = 'again and again you come your puny devices infect use and pollute our ether when will you ever be satisfied'
     message = encode(message)
-    yn = input('''ROVER: There appears to be an alien lifeform in this cave. I have taken a low resolution scan. I will send it to you now.''')
+
+    yn = input('''ROVER: There appears to be an alien lifeform in this cave. I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
     
-    open_image('roger.png')
+    if yn == 'y':
+        print("\nExporting scan ....")
+        open_image('roger.png')
 
     print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
     print("ROVER: Okay, here is a rough translation: {}".format(message))
 
+#whenever lcoation is visited for first itme, location.event is triggered
 fishcave.event = fishcave_event
 
+fishcave.greeting = ('''There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
+clearing, and to the east is a larger cave mouth leading outside. The alien is brooding in the corner, but appears to maintain its focus upon us.''')
 
+def fishcave_update():
+    fishcave.greeting = '''There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
+clearing, and to the east is a larger cave mouth leading outside.'''
+
+#we need to write drill method that calls update, removes drill from alien verbs, , and add loot method, 
+fishcave.update = fishcave_update
 
      
 

@@ -9,6 +9,8 @@ class person:
         self.minerals = 0
         self.wincondition = False
         self.energy = 3
+        #must add to distinguish between person and item
+        self.isalive = True
 
     
 
@@ -60,6 +62,7 @@ class item:
         self.onpickupgreeting = None #message to add to location greeting after item gets pickedup
         self.directobjects = {} #
         self.iscrystal = False
+        self.isalive = False
 
 
 
@@ -68,7 +71,10 @@ class NPC(person):
     def __init__(self,name):
         super().__init__()
         self.name = name
-        self.dead = False
+        
+        self.verbs = {}
+        self.deathscream = ''''''
+        
 
 
         
@@ -210,6 +216,38 @@ def energy():
     else:
         print("ROVER:You are completely out of energy! Explore around and find an energy crystal so you can proceeed with your mission!")
 
+def loot(deadguy):
+    if deadguy.isalive == False:
+        print("ROVER:After searching through the soma of the {} we found:".format(deadguy.name))
+        
+        for key, val in deadguy.inventory.items():
+            if val.iscrystal == True:
+                me.energy += 1
+                
+                print("An energy crystal!")
+
+            else:
+                me.inventory[key] = val
+                
+                print("A {}".format(key))
+
+        deadguy.verbs.pop('loot')
+        deadguy.inventory = {}
+
+
+
+#so far can only handle drillign people
+def drill(itemperson):
+    #if the thing is a person
+    if itemperson.isalive == True:
+        if itemperson.deathscream != "":
+            print("ROVER:Right before I performed a drill operation on the {}, it tried to say something:".format(itemperson.name))
+            print(itemperson.deathscream)
+        print("ROVER:The {} is no more".format(itemperson.name))
+        itemperson.isalive =False
+        itemperson.verbs.pop('drill')
+        itemperson.verbs['loot'] = loot
+    me.location.update()
 
 
 
@@ -227,7 +265,7 @@ singleverbs = {'inventory':showinventory,'look':look,'test_soil':test_soil,'ener
 
 
 #this should be a dictinoary 'verb':verb/method
-verbs = {'pickup':pickup,'inventory':showinventory,'drop':drop}
+verbs = {'pickup':pickup,'inventory':showinventory,'drop':drop,'loot':loot,'drill':drill}
 
 #add singleverbs to verbs
 verbs.update(singleverbs)
