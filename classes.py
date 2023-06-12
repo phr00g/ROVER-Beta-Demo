@@ -8,6 +8,7 @@ class person:
         self.location = ''
         self.minerals = 0
         self.wincondition = False
+        self.energy = 3
 
     
 
@@ -27,6 +28,8 @@ class location:
         #explanations for inabliltiy to travel in direction: whynot['north'] = the door is locked
         self.whynot = {}
         self.persons = {} #says who is in location     person.name:person
+        self.istestable = False
+        self.hasbeentested = False
 
 
         
@@ -39,7 +42,7 @@ class item:
         
         
         self.isgone = None
-        self.isalive = False
+        
         self.interactables = {} #dict of items with which current item can interact with itemname:itemvar
         self.verbs = {}
         self.prepositions = []  #prepositions that are valid in command before item
@@ -47,6 +50,7 @@ class item:
         self.ondrop = "You dropped the {}".format(self.name) #append to string if you want more to happen
         self.onpickupgreeting = None #message to add to location greeting after item gets pickedup
         self.directobjects = {} #
+        self.iscrystal = False
 
 
 
@@ -55,6 +59,13 @@ class NPC(person):
     def __init__(self,name):
         super().__init__(name)
         self.name = name
+        self.dead = False
+
+
+        
+
+
+
 
 #instantiations, we must creater player controller object here
 gamegoing = True
@@ -75,17 +86,25 @@ me = person()
 def pickup(item): #item is an object from item class
 
     
-
-    #add item from location to inventory
-    me.inventory[item.name] = me.location.inventory[item.name]
-
+    if item.iscrystal == False:
+        #add item from location to inventory
+        me.inventory[item.name] = me.location.inventory[item.name]
+        print(item.onpickup)
+    else:
+        me.energy += 1
+        print("You now have {} energy!".format(me.energy))
+    
     #remove item from location
     me.location.inventory.pop(item.name)
     
-    print(item.onpickup)
+    
 
     if item.onpickupgreeting != None:
         me.location.greeting += item.onpickupgreeting
+
+
+
+
 
 def drop(item):#arg is item object, drop item leaves player inventory enters current location inventory, inverse of pickup
     if item.name in me.inventory:
@@ -123,28 +142,47 @@ def nullverb(): #this method is for verbs we want to recognize as reasonable but
 
 def test_soil():
 
-    #add case where person is there and therefore cannot drill
 
 
-    if me.location.hasmineral == True:
-        #remove mineral from location
-        me.location.hasmineral = False
-        print("You have tested and found this site suitable for excavation! Good job!")
-        me.location.greeting += "You have tested and found this site suitable for excavation! Good job!"
+    #check if player has energy
+    if me.energy >= 1:
 
-        me.minerals += 1
+        if me.location.istestable == True and me.location.hasbeentested == False:
+            
+            #remove 1 energy
+            me.energy -= 1
 
-        if me.minerals == 3:
-            #have the win condition and other stuff happen
+            if me.location.hasmineral == True:
+                #remove mineral from location
+                me.location.hasmineral = False
+                me.location.istestable == False
+                me.location.hasbeentested == True
+                print("You have tested and found this site suitable for excavation! Good job!")
+                me.location.greeting += "You have tested and found this site suitable for excavation! Good job!"
 
-            print("Good job! Return to the landing dock for extraction and to complete your mission!")
-            me.wincondition  = True
-            pass
+                me.minerals += 1
+
+                if me.minerals == 3:
+                    #have the win condition and other stuff happen
+
+                    print("Good job! Return to the landing dock for extraction and to complete your mission!")
+                    me.wincondition  = True
+                    pass
+
+
+            else:
+                print("ROVER:This site is not suitable for excavation.")
+                me.location.greeting += "This site is not suitable for excavation."
+
+        elif me.location.hasbeentested == True:
+            print("ROVER: You can not test this site, as it has already been tested")
+
+        else:
+            print('ROVER: You can not test this site')
+
 
     else:
-        print("ROVER:Either, this site is not suitable for excavation, or you have already tested and confirmed this site.")
-
-
+        print("You have no energy to drill!")
 
 
 

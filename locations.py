@@ -130,14 +130,6 @@ for row in map_array:
 
 
 
-
-
-
-
-
-
-
-
 #apply all greetings here attributes in next section
 
 
@@ -149,6 +141,26 @@ for row in map_array:
 
 
 
+#adding minerals to correct sites
+map_array[7][0].hasmineral = True
+map_array[7][0].istestable = True
+
+
+map_array[4][8].hasmineral = True
+map_array[4][8].istestable = True 
+
+
+map_array[6][7].hasmineral = True
+map_array[6][7].istestable = True
+
+
+map_array[1][3].hasmineral = True
+map_array[1][3].istestable = True
+
+
+#add all items
+
+map_array[3][4].inventory['crystal'] = crystal1
 
 
 
@@ -157,7 +169,5 @@ for row in map_array:
 
 
 
-
-#b4.greeting = "Whatever"
 
 
