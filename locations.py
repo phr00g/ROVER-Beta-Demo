@@ -131,6 +131,13 @@ for row in map_array:
 
 
 #apply all greetings here attributes in next section
+landing =map_array[3][4]
+landing.greeting = "ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust.\n There appears to be an energy crystal on the floor"
+
+def landing_update():
+    landing.greeting = "ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust."
+
+landing.update = landing_update()
 
 
 
@@ -161,6 +168,9 @@ map_array[1][3].istestable = True
 #add all items
 
 map_array[3][4].inventory['crystal'] = crystal1
+
+
+
 
 
 

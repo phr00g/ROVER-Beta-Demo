@@ -30,6 +30,10 @@ class location:
         self.persons = {} #says who is in location     person.name:person
         self.istestable = False
         self.hasbeentested = False
+        self.desc = "" #description of locaiton in greeting of adjacent and connected locaitons
+
+    def update():
+        pass
 
 
         
@@ -96,6 +100,8 @@ def pickup(item): #item is an object from item class
     
     #remove item from location
     me.location.inventory.pop(item.name)
+
+    me.location.update
     
     
 
