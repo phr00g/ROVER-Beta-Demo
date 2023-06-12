@@ -45,12 +45,16 @@ while gamegoing:
 
     #consider refresh method / game tick: here location change tick
 
-
+    
     #for when player returns to landingdock: a3, and has win condition -----> end game
     # if me.location == a3 and me.wincondition == True:
     #     print("Congratualtions Associated Remote ROVER Engineer #{}, your missions was a success! You will now be disconnected from your ROVER. Please sign back on tomorrow at 7:00 am for your next assignment. ".format(idnumber))
     #     quit()
 
+    #if first time visitng do first time event
+    if me.location.firsttime ==True:
+        
+        me.location.event()
 
     #at the moment arbitrary condition for command loop
     commanding  = True
@@ -58,7 +62,8 @@ while gamegoing:
     loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
 
     #show greeting for specific location that just entered
-    print(me.location.greeting)
+    print(me.location.greeting) 
+    me.location.firsttime = False
 
 
     #begin command loop

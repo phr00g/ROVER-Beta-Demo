@@ -1,12 +1,4 @@
-from classes import *
-from locations import *
-from items import *
-from tokenhandler import *
-import random
-import pygame
-import time
-import threading
-from pgmap import *
+
 
 
 decodeDict = {'⟐': 'a', '⟑': 'b', '⟒': 'c', '⟓': 'd', '⟔': 'e', '⟕': 'f', '⟖': 'g', '⟗': 'h', '⟘': 'i', '⟙': 'j', '⟚': 'k', '⟛': 'l', '⟜': 'm', '⟝': 'n', '⟞': 'o', '⟟': 'p', '⟠': 'q', '⟡': 'r', '⟢': 's', '⟣': 't', '⟤': 'u', '⟥': 'v', '⟦': 'w', '⟧': 'x', '⟨': 'y', '⟩': 'z', ' ': ' '}

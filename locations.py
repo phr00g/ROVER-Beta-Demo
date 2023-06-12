@@ -1,6 +1,9 @@
 from classes import *
 from items import *
 import pygame
+import os
+from lang import encode,decode
+
 
 #special case and order for starting location
 
@@ -140,14 +143,14 @@ for row in map_array:
 #landing
 landing =map_array[3][4]
 landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
-to be a more flat rockland and a visible floating sheetrock at least 100 ft in the sky. To the east is a large hill with a gray metallic sheen.
+to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
 To the south is the center of a massive crater.    There appears to be an energy crystal on the floor'''
 
 landing.desc = "your landing site"
 
 def landing_update():
     landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
-to be a more flat rockland and a visible floating sheetrock at least 100 ft in the sky. To the east is a large hill with a gray metallic sheen.
+to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
 To the south is the center of a massive crater. '''
 
 landing.update = landing_update
@@ -158,6 +161,37 @@ crater = map_array[3][5]
 crater.greeting = '''ROVER:You are at the center of a very large crater. This must be the result of some sort of interplanetary collision. To the south is an ascent to the southern
 lip of the crater. To the east is an ascent to the eastern lip of the crater. The landing dock is to the north.'''
 crater.istestable = True
+
+#flatrock area w rumble
+rumble = map_array[3][3]
+rumble.greeting = '''ROVER: There is not much to see around here. There are a few large boulders, with a cement color laying around. I am picking up a low pitched rumble through
+the thin atmosphere, its origin is beneath the ground. To the north is terrain that is more of the same, but there is a large slab that seems to be floating at least 100 meters in the sky
+and there is nothing supporting it. Curious. To the east is the mouth of a large cave with stalagtites growing in the up and down direction. It looks like the mouth of a giant fish. 
+The landing dock is south of here. '''
+
+#fishcave
+fishcave = map_array[4][3]
+#there is a person here
+roger = NPC('alien')
+fishcave.inventory['alien'] = roger
+
+def fishcave_event():
+    message = 'again and again you come your puny devices infect use and pollute our ether when will you ever be satisfied'
+    message = encode(message)
+    yn = input('''ROVER: There appears to be an alien lifeform in this cave. I have taken a low resolution scan. I will send it to you now.''')
+    
+    open_image('roger.png')
+
+    print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
+    print("ROVER: Okay, here is a rough translation: {}".format(message))
+
+fishcave.event = fishcave_event
+
+
+
+     
+
+
 
 
 

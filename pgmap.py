@@ -1,9 +1,11 @@
 from classes import *
 from locations import *
+
 import random
 import pygame
 import time
 import threading
+from lang import *
 
 
 def pygo():

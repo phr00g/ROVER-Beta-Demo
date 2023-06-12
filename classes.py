@@ -1,5 +1,5 @@
 #classes for player, and locations (locations should be nodes with 4 edges: north, south, east and west)
-
+import os
 
 class person:
     def __init__(self):
@@ -32,7 +32,12 @@ class location:
         self.hasbeentested = False
         self.desc = "" #description of locaiton in greeting of adjacent and connected locaitons
         self.hasmineral = False
+        self.hasevent = False
+        self.firsttime = True
     def update():
+        pass
+
+    def event(self):
         pass
 
 
@@ -61,7 +66,7 @@ class item:
 
 class NPC(person):
     def __init__(self,name):
-        super().__init__(name)
+        super().__init__()
         self.name = name
         self.dead = False
 
@@ -79,7 +84,10 @@ me = person()
 
 #private methods ----------------------------------------------------------------
 
-
+def open_image(file_name):
+    folder_path = 'images'
+    file_path = os.path.join(folder_path, file_name)
+    os.startfile(file_path)
         
 
 
