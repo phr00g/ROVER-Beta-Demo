@@ -1,5 +1,10 @@
-from classes import *
 from methods import *
+from classes import *
+#to stop random complaints
+from methods import pickup,drop,verbs
+
+
+
 torch = item('torch')
 torch.verbs['pickup'] = pickup
 torch.verbs['drop'] = drop

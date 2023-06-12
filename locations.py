@@ -1,4 +1,5 @@
 from classes import *
+from methods import drill, open_image
 from items import *
 import pygame
 import os
