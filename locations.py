@@ -40,6 +40,37 @@ for x in range(width):
 #create all PERMANENT disconnections, remember iteration later so dont be redundant!
 #[col][row]
 
+#starting west wall
+map_array[3][2].west = None
+map_array[3][3].west = None
+map_array[3][4].west = None
+map_array[3][5].west = None
+map_array[3][6].west = None
+
+#south east abyss
+map_array[6][5].north = None
+map_array[6][5].west = None
+map_array[6][5].east = None
+map_array[6][5].south = None
+map_array[6][6].north = None
+map_array[6][6].west = None
+map_array[6][6].east = None
+map_array[6][6].south = None
+
+#east shrine room north and south
+map_array[7][6].south = None
+map_array[7][6].north = None
+
+#south east cave abyss border
+map_array[5][8].north = None
+map_array[6][8].north = None
+map_array[7][8].north = None
+#and the bridge
+map_array[5][8].west = None
+
+
+
+
 #top left corner
 map_array[7][0].west = None
 
@@ -53,6 +84,19 @@ map_array[5][2].west = None
 map_array[5][2].south = None
 map_array[6][2].east = None
 map_array[6][2].south = None
+
+
+#west volcano crest
+map_array[1][5].north = None
+map_array[1][5].west = None
+map_array[1][5].east = None
+map_array[1][5].south = None
+
+#inverse volcano
+map_array[1][3].north = None
+map_array[1][3].west = None
+map_array[1][3].east = None
+map_array[1][3].south = None
 
 
 
