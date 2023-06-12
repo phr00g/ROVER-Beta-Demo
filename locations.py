@@ -130,16 +130,34 @@ for row in map_array:
 
 
 
+
+
+
+
+
+
 #apply all greetings here attributes in next section
+#landing
 landing =map_array[3][4]
-landing.greeting = "ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust.\n There appears to be an energy crystal on the floor"
+landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
+to be a more flat rockland and a visible floating sheetrock at least 100 ft in the sky. To the east is a large hill with a gray metallic sheen.
+To the south is the center of a massive crater.    There appears to be an energy crystal on the floor'''
+
+landing.desc = "your landing site"
 
 def landing_update():
-    landing.greeting = "ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust."
+    landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
+to be a more flat rockland and a visible floating sheetrock at least 100 ft in the sky. To the east is a large hill with a gray metallic sheen.
+To the south is the center of a massive crater. '''
 
-landing.update = landing_update()
+landing.update = landing_update
 
+#crater
 
+crater = map_array[3][5]
+crater.greeting = '''ROVER:You are at the center of a very large crater. This must be the result of some sort of interplanetary collision. To the south is an ascent to the southern
+lip of the crater. To the east is an ascent to the eastern lip of the crater. The landing dock is to the north.'''
+crater.istestable = True
 
 
 

@@ -31,7 +31,7 @@ class location:
         self.istestable = False
         self.hasbeentested = False
         self.desc = "" #description of locaiton in greeting of adjacent and connected locaitons
-
+        self.hasmineral = False
     def update():
         pass
 
@@ -100,8 +100,8 @@ def pickup(item): #item is an object from item class
     
     #remove item from location
     me.location.inventory.pop(item.name)
-
-    me.location.update
+    
+    me.location.update()
     
     
 
@@ -177,8 +177,11 @@ def test_soil():
 
 
             else:
-                print("ROVER:This site is not suitable for excavation.")
+                print("ROVER:You have tested this site, and it site is not suitable for excavation.")
+                print("ROVER:You now have {} energy".format(me.energy))
                 me.location.greeting += "This site is not suitable for excavation."
+            
+            me.location.hasbeentested = True
 
         elif me.location.hasbeentested == True:
             print("ROVER: You can not test this site, as it has already been tested")
@@ -192,7 +195,12 @@ def test_soil():
 
 
 
+def energy():
+    if me.energy >= 1:
+        print("ROVER:You have {} energy!".format(me.energy))
 
+    else:
+        print("ROVER:You are completely out of energy! Explore around and find an energy crystal so you can proceeed with your mission!")
 
 
 
@@ -205,7 +213,7 @@ def test_soil():
 #verbs are methods, all verbs should be defined above ----------------------------------------------------------------------------------------------
 
 #need single verbs dictionary
-singleverbs = {'inventory':showinventory,'look':look,'test_soil':test_soil}
+singleverbs = {'inventory':showinventory,'look':look,'test_soil':test_soil,'energy':energy}
 
 
 

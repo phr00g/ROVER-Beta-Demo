@@ -34,6 +34,7 @@ me.location = map_array[3][4]
 
 
 
+
 running = True
 flash_timer = 0
 flash_interval = 500  # millisecond
