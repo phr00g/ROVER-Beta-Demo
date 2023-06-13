@@ -7,7 +7,11 @@ from lang import encode,decode
 from NPCs import *
 
 
-#special case and order for starting location
+#just to appease false positive problem form ide
+from NPCs import roger
+
+
+
 
 
 
@@ -142,7 +146,8 @@ for row in map_array:
 
 
 #apply all greetings here attributes in next section
-#landing
+
+#landing###############################
 landing =map_array[3][4]
 landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
 to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
@@ -158,7 +163,7 @@ To the south is the center of a massive crater. '''
 
 landing.update = landing_update
 
-#crater
+#crater###########
 
 crater = map_array[3][5]
 crater.greeting = '''ROVER:You are at the center of a very large crater. This must be the result of some sort of interplanetary collision. To the south is an ascent to the southern
@@ -172,7 +177,7 @@ the thin atmosphere, its origin is beneath the ground. To the north is terrain t
 and there is nothing supporting it. Curious. To the east is the mouth of a large cave with stalagtites growing in the up and down direction. It looks like the mouth of a giant fish. 
 The landing dock is south of here. '''
 
-#fishcave
+#fishcave###############
 fishcave = map_array[4][3]
 #there is a person here
 
