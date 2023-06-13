@@ -9,7 +9,7 @@ import webbrowser
 
 
 #just to appease false positive problem form ide
-from NPCs import roger
+from NPCs import roger,michael
 
 
 
@@ -242,14 +242,45 @@ def obelisk1event():
     print("Signal disrupted please wait....")
     opened = webbrowser.open('https://newemailssadfsdfsh.s3.us-west-2.amazonaws.com/index.html')
     print("....materials and sediments. It is crude and unsightly. ")
+    #add rest of greeting here just cause
+    print('''ROVER:To the south appers to be the mouth of some sort of cave, I do not see anything of note to the west, to the east is a
+    steep descent to a very vast tar pit that we will not be able to reach. To the north is some sort of very high and large smoke spiral.
+    I think your people call them 'vortexes'. ''')
 
 obelisk1.event = obelisk1event
 
+####crater lip south of landing############
+
+craterlipsouth = map_array[3][6]
+craterlipsouth.eventflag = True
+
+craterlipsouth.greeting = '''ROVER:We are at the souther lip of a very large crater. We are surrounded by a very dark, glassy residue that does not seem 
+familiar to this terrain. '''
+
+craterlipsouth.inventory['alien'] = michael
+
+def craterlipsouthevent():
+    print(1111111)
+    if 'alien' in craterlipsouth.inventory and michael.isalive == True:
+        message = 'you do not have to do what all of your associates have done, you can save us. If you can ever find a way to listen to us you will find we can work together. better yet destroy those signal towers and leave us alone'
+        message = encode(message)
+
+        yn = input('''ROVER: There appears to be an alien lifeform in the smoke. I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
+        
+        if yn == 'y':
+            print("\nExporting scan ....")
+            #we change this when we make michael's photo
+            open_image('roger.png')
+
+        print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
+        print("ROVER: Okay, here is a rough translation: {}".format(message))
+
+    else:
+        craterlipsouth.eventflag = False
 
 
-
-
-
+craterlipsouth.eventflag = True
+craterlipsouth.event = craterlipsouthevent
 
 
 
