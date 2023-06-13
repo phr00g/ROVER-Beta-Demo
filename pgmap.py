@@ -31,7 +31,7 @@ def pygo():
     running = True
     window.fill(BLACK)
 
-    blink_interval = 1.0  # 1 second interval for blinking
+    blink_interval = 2.0  # 1 second interval for blinking
     is_blinking = False
 
     while running:

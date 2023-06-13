@@ -183,19 +183,25 @@ roger.inventory['crystal'] = crystal2
 fishcave.inventory['alien'] = roger
 
 def fishcave_event():
-    message = 'again and again you come your puny devices infect use and pollute our ether when will you ever be satisfied'
-    message = encode(message)
+    if 'alien' in fishcave.inventory and roger.isalive == True:
+        message = 'again and again you come your puny devices infect use and pollute our ether when will you ever be satisfied'
+        message = encode(message)
 
-    yn = input('''ROVER: There appears to be an alien lifeform in this cave. I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
-    
-    if yn == 'y':
-        print("\nExporting scan ....")
-        open_image('roger.png')
+        yn = input('''ROVER: There appears to be an alien lifeform in this cave. I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
+        
+        if yn == 'y':
+            print("\nExporting scan ....")
+            open_image('roger.png')
 
-    print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
-    print("ROVER: Okay, here is a rough translation: {}".format(message))
+        print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
+        print("ROVER: Okay, here is a rough translation: {}".format(message))
+
+    else:
+        fishcave.eventflag = False
 
 #whenever lcoation is visited for first itme, location.event is triggered
+fishcave.eventflag = True
+
 fishcave.event = fishcave_event
 
 fishcave.greeting = ('''There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 

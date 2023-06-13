@@ -37,8 +37,7 @@ me.location = map_array[3][4]
 
 
 running = True
-flash_timer = 0
-flash_interval = 500  # millisecond
+
 
 
 
@@ -52,20 +51,25 @@ while gamegoing:
     #     print("Congratualtions Associated Remote ROVER Engineer #{}, your missions was a success! You will now be disconnected from your ROVER. Please sign back on tomorrow at 7:00 am for your next assignment. ".format(idnumber))
     #     quit()
 
-    #if first time visitng do first time event
-    if me.location.firsttime ==True:
+
+
+    #CHANGE THIS, IF ME.LOCAITON.EVENTFLAG == TRUE THEN ME.LOCATION.EVENT
+    if me.location.eventflag == True:
         
         me.location.event()
 
-    #at the moment arbitrary condition for command loop
-    commanding  = True
+    
     #must update every time which is stupid
     loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
 
     #show greeting for specific location that just entered
     print(me.location.greeting) 
+    
+    #now that we have visitied with location, its firstime attribtue is false and must stay that way
     me.location.firsttime = False
 
+    #at the moment arbitrary condition for command loop
+    commanding  = True
 
     #begin command loop
     while commanding:

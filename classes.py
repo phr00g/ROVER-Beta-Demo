@@ -36,6 +36,7 @@ class location:
         self.hasmineral = False
         self.hasevent = False
         self.firsttime = True
+        self.eventflag = False
     def update():
         pass
 
