@@ -9,6 +9,7 @@ import time
 import threading
 from pgmap import *
 from methods import *
+from NPCs import *
 
 
        

@@ -4,6 +4,7 @@ from items import *
 import pygame
 import os
 from lang import encode,decode
+from NPCs import *
 
 
 #special case and order for starting location
@@ -174,9 +175,7 @@ The landing dock is south of here. '''
 #fishcave
 fishcave = map_array[4][3]
 #there is a person here
-roger = NPC('alien')
-roger.verbs['drill'] = drill
-roger.inventory['crystal'] = crystal2
+
 
 
 
@@ -204,14 +203,14 @@ fishcave.eventflag = True
 
 fishcave.event = fishcave_event
 
-fishcave.greeting = ('''There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
+fishcave.greeting = ('''ROVER: There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
 clearing, and to the east is a larger cave mouth leading outside. The alien is brooding in the corner, but appears to maintain its focus upon us.''')
 
 def fishcave_update():
-    fishcave.greeting = '''There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
-clearing, and to the east is a larger cave mouth leading outside.'''
+    fishcave.greeting = '''ROVER: There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
+clearing, and to the east is a larger cave mouth leading outside. The remains on the alien lay here.'''
 
-#we need to write drill method that calls update, removes drill from alien verbs, , and add loot method, 
+#involked in drill in methods.py
 fishcave.update = fishcave_update
 
      
