@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Executive Email Exchange</title>
+    <style>
+        .pyramid {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .pyramid::before,
+        .pyramid::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 50px 50px 0;
+            border-color: #000 transparent;
+        }
+
+        .pyramid::before {
+            bottom: 50%;
+            border-bottom-width: 50px;
+        }
+
+        .pyramid::after {
+            top: 50%;
+            border-top-width: 50px;
+        }
+
+        .pyramid div {
+            position: absolute;
+            top: 35px;
+            left: 15px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .pyramid span {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 10px;
+            height: 10px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .pyramid i {
+            position: absolute;
+            top: 0;
+            left: 35px;
+            width: 1px;
+            height: 35px;
+            background: #000;
+            transform: rotate(45deg);
+        }
+
+        body {
+            background-color: #fafafa;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            margin: auto;
+            padding: 20px 10%;
+            max-width: 800px;
+        }
+        
+        .email {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #eee;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .sender {
+            color: #dd4b39;
+        }
+        
+        .timestamp {
+            font-size: 0.8em;
+            color: #777;
+            text-align: right;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            text-indent: 2em;
+            line-height: 1.6em;
+            font-size: 1em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="pyramid">
+        <div><span></span><i></i></div>
+    </div>
+
+    <!-- Repeat the email div 8 times -->
+    <!-- Just replace the sender, timestamp, and content as needed -->
+    <div class="email">
+        <div class="header">From: <span class="sender">Exec1</span></div>
+        <div class="header">To: Corporate Team</div>
+        <div class="header">CC: Exec2, Exec3</div>
+        <div class="header">Subject: Urgent: Profit Maximization</div>
+        
+        <div class="timestamp">12:01 PM</div>
+        <div class="content">There is some that I need to admit to you, I didn't really think that the movei
+            arrival was all that good. It seems that the stoic performances by the lead was supposed to emphasize
+            subtle and physical acting, but to be honest I really just felt like it cast a monotone shadow on the entire 
+            film, that felt too serious. There was absolutely no sense of narrative space, and it was just a straight
+            forward march to an ending that I felt coming and dreaded, an abstract moral resolution. This was 
+            confusing for me because I did not feel that morality was at all a theme in this story.
+        </div>
+    </div>
+
+    <div class="email">
+        <div class="header">From: <span class="sender">Exec1</span></div>
+        <div class="header">To: Corporate Team</div>
+        <div class="header">CC: Exec2, Exec3</div>
+        <div class="header">Subject: Urgent: Profit Maximization</div>
+        
+        <div class="timestamp">12:01 PM</div>
+        <div class="content">We must increase profits by any means necessary.</div>
+    </div>
+
+    <div class="email">
+        <div class="header">From: <span class="sender">Exec1</span></div>
+        <div class="header">To: Corporate Team</div>
+        <div class="header">CC: Exec2, Exec3</div>
+        <div class="header">Subject: Urgent: Profit Maximization</div>
+        
+        <div class="timestamp">12:01 PM</div>
+        <div class="content">We must increase profits by any means necessary.</div>
+    </div>
+
+    <!-- Copy the structure of the email div above for each new email in the thread. -->
+    <!-- Repeat this for a total of 8 emails. -->
+
+</body>
+</html>

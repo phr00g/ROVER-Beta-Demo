@@ -127,7 +127,7 @@ def energy():
 
     else:
         print("ROVER:You are completely out of energy! Explore around and find an energy crystal so you can proceeed with your mission!")
-
+#we wh
 def loot(deadguy):
     if deadguy.isalive == False:
         print("ROVER:After searching through the soma of the {} we found:".format(deadguy.name))

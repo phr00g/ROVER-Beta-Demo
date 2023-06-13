@@ -5,6 +5,7 @@ import pygame
 import os
 from lang import encode,decode
 from NPCs import *
+import webbrowser
 
 
 #just to appease false positive problem form ide
@@ -147,7 +148,7 @@ for row in map_array:
 
 #apply all greetings here attributes in next section
 
-#landing###############################
+#landing###############################  
 landing =map_array[3][4]
 landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
 to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
@@ -219,6 +220,41 @@ clearing, and to the east is a larger cave mouth leading outside. The remains on
 fishcave.update = fishcave_update
 
      
+#floating rock town##########
+floating = map_array[3][2]
+
+floating.greeting = '''ROVER: We are just beneath the giant floating slab. From this angle it is impossible to see what 
+is directly above us. I can sense a very faint low frequence hum coming from the southern direciton. To the east appears to be the mouth of a cave, and to the north there appears to be nothing of
+note. This site is not suitable for excavation. '''
+
+#31 clearing##################### 
+map_array[3][1]. greeting = '''This is a standard clearing. The ground is flat with a thin layer of orange dust. 
+To the south I can see a large slab floating very high in the sky. To the north appears to be some sort of swamp. To the east there seems 
+to be some sort of monument or shrine, thin and tall. From here it is difficult to tell. This site is not suitable for excavation.'''
+
+
+## OBELISK NUMBER 1
+obelisk1 = map_array[4][1] 
+obelisk1.eventflag = True
+
+def obelisk1event():
+    print("ROVER: There is a very large obelisk made from an array of local.....")
+    print("Signal disrupted please wait....")
+    opened = webbrowser.open('https://newemailssadfsdfsh.s3.us-west-2.amazonaws.com/index.html')
+    print("....materials and sediments. It is crude and unsightly. ")
+
+obelisk1.event = obelisk1event
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -248,7 +284,9 @@ map_array[1][3].istestable = True
 
 #add all items
 
-map_array[3][4].inventory['crystal'] = crystal1
+
+#
+landing.inventory['crystal'] = crystal1
 
 
 
