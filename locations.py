@@ -483,6 +483,12 @@ map_array[0][2].inventory['crystal'] = crystal1
 map_array[7][2].inventory['crystal'] = crystal1
 
 
+# for demo, go through every location if there is not  REMOVE AFTER DEMO
+
+for row in map_array:
+    for loc in row:
+        if loc.greeting == '' and loc.eventflag == False:
+            loc.greeting = "There is nothing to see here."
 
 
 

@@ -50,3 +50,4 @@ lever = item('lever')
 lever.verbs['pull'] = pull
 lever.verbs['use'] = pull
 lever.greeting = '''There is some sort of lever fixed agains the cave wall.'''
+###
