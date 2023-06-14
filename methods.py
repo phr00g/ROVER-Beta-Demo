@@ -114,7 +114,7 @@ def test_soil():
 
                 me.minerals += 1
 
-                if me.minerals == 3:
+                if me.minerals == 5:
                     #have the win condition and other stuff happen
 
                     print("Good job! Return to the landing dock for extraction and to complete your mission!")

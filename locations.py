@@ -410,10 +410,10 @@ def darkcavelevel2event():
 darkcavelevel2.event = darkcavelevel2event
 
 def level2update():
-    print("ROVER: A hidden bridge extended from underneath us and bridged the ravine. We can not go further east! ")
+    print("ROVER: A hidden bridge extended from underneath us and bridged the ravine. We can now go further east! ")
     map_array[6][8].east = map_array[7][8]
     map_array[7][8].west = map_array[6][8]
-    loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
+    
     darkcavelevel2.greeting = '''ROVER: Our flashlight is illuminating this extremely dark cave. To the west is the first level of this cave. To the east I can see another deeper level, and
           what appears to be some sort of tower. The bridge is allowing us to travel east. To the north is a cave wall. '''
 

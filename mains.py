@@ -20,13 +20,21 @@ from NPCs import *
 #intro sequence
 idnumber = str(random.randint(1000,9999))
 print('\n')
-print("Greetings, Materials Incorporated Associated Remote ROVER Engineer #{}!  ".format(idnumber))
-print("It seems that this is your first time uplinking to a ROVER, luckily since you graduated just a few weeks ago you are up to date with all of the new model's capabilities!")
+print("Greetings on behalf of Material Solutions Incorporated (MSI), Associate Remote ROVER Engineer #{}!  ".format(idnumber))
+print("It seems that this is your first time uplinking to a ROVER! Fear!")
 print('\n')
-print("As you know, Associated Remote ROVER Engineer #{}, Materials incorporated's TS909 Rover is outfitted with many cutting edge features, but most relevant to your mission its new 'drilling' feature. ".format(idnumber))
-print("Materials Incorporated is looking for available and ethically reachable deposits of REDACTED , which is why your ROVER is currently located on the conveniently nearby terrestrial planet of REDACTED")
-print("Please locate and test (three) suitable excavation sites, and return your ROVER safely back to its landing dock. ")
-print("Don't worry, your ROVER is currently at the landing dock. And by the way, just in case your manual isn't fully up to date, to test whether your current location is suitable for drilling, just type 'test_soil'.\n")
+print("As you know, Associated Remote ROVER Engineer #{}, MSI's TS909 ROVER is a simple little soil testing and drilling rig. We wish you could see how cute it is!".format(idnumber))
+print("MSI is looking for available and ethically reachable deposits of Neutronium , which is why your ROVER is currently located on the conveniently nearby terrestrial planet of REDACTED.")
+print("Excitingly you are part of the first probe that we have sent to this planet! Our satellite scan shows that there is no significant intelligent life on this planet. In the extremely unlikelty event that you do encounter some low level lifeform, please do not acknowledge it and carry on with your mission. ")
+print("Please locate and test (five) suitable excavation sites, and return your ROVER safely back to its landing dock. ")
+print("And, don't worry, your ROVER is currently at the landing dock. \n")
+print("You you already well know your ROVER is an extremely simple device. There are only a few things you can do:")
+print("Type in 'test_soil' to test your location and determine if it is a suitable excavation site.  Type in 'drill' followed by an object to drill into it.")
+print("test_soil and drill both will cost you one point of energy. You start with 3 energy, and you can get more by using: 'pickup' to gather energy crystal.")
+print("Lastly you can check your energy level by typing in 'energy', you can see how many suitable excavation sites you have found by typing in 'progress', and you can see what is in your inventory by typing in 'inventory'. ")
+print("This is the full extent of your ROVER's capabilites. Typing in nonexistent or unauthorized commands will risk breaking your ROVER.")
+print("We know you will be successful!\n")
+
 
 #game loop, DECLARE PLAYER STARTING LOCATION BEFORE ENTERING GAMELOOP
 #                  [column][row]
@@ -48,12 +56,12 @@ while gamegoing:
 
     
     #for when player returns to landingdock: a3, and has win condition -----> end game
-    # if me.location == a3 and me.wincondition == True:
-    #     print("Congratualtions Associated Remote ROVER Engineer #{}, your missions was a success! You will now be disconnected from your ROVER. Please sign back on tomorrow at 7:00 am for your next assignment. ".format(idnumber))
-    #     quit()
+    if me.location == landing and me.wincondition == True:
+        print("Congratualtions Associated Remote ROVER Engineer #{}, your missions was a success! You will now be disconnected from your ROVER. Please sign back on tomorrow at 7:00 am for your next assignment. ".format(idnumber))
+        quit()
 
 #####################################TEST CONDITION AREA REMEMBER TO REMOVE AFTER USE##############################
-    me.inventory['flashlight'] = flashlight
+    
 
 
 ###################################################################################################################
