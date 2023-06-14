@@ -95,7 +95,10 @@ def test_soil():
     #check if player has energy
     if me.energy >= 1:
 
-        if me.location.istestable == True and me.location.hasbeentested == False:
+        if 'alien' in me.location.inventory and me.location.inventory['alien'].isalive == True:
+            print("ROVER: You can not test the soil while there is a living being here!")
+
+        elif me.location.istestable == True and me.location.hasbeentested == False:
             
             #remove 1 energy
             me.energy -= 1
@@ -144,7 +147,7 @@ def minerals():
 
 #we wh
 def loot(deadguy):
-    if deadguy.isalive == False:
+    if deadguy.isalive == False and len(deadguy.inventory ) != 0:
         print("ROVER:After searching through the soma of the {} we found:".format(deadguy.name))
         
         for key, val in deadguy.inventory.items():
@@ -160,6 +163,9 @@ def loot(deadguy):
 
         deadguy.verbs.pop('loot')
         deadguy.inventory = {}
+
+    else:
+        print("ROVER:There is nothing in the soma of the {}".format(deadguy.name))
 
 
 
@@ -186,10 +192,12 @@ def give(gift):
 
     else:
         print("ROVER:To give something it must be in our possesion.")
+        
+    #alien shoudl eave after getting gift
 
 
 
-#so far can only handle drillign people
+#
 def drill(itemperson):
     #if the thing is a person
     if itemperson.isalive == True:
@@ -200,6 +208,8 @@ def drill(itemperson):
         itemperson.isalive =False
         itemperson.verbs.pop('drill')
         itemperson.verbs['loot'] = loot
+        #logic only can handle drilling aliens and living things, when thing dies change its greeting
+        itemperson.greeting = '''There is a deceased {} laying here.'''.format(itemperson.name)
 
     #if its just an item, then remove it from the location
     else:
@@ -212,6 +222,19 @@ def drill(itemperson):
     energy()
     #what you want to happen after drilling occurs
     me.location.update()
+
+
+def pull(leverobj):
+    if leverobj.name == 'lever':
+        me.location.update()
+        leverobj.verbs.pop('pull')
+        leverobj.verbs.pop('use')
+
+    else:
+        print("ROVER:There is nothing here to pull.")
+
+
+
 
 
 
@@ -229,7 +252,7 @@ singleverbs = {'inventory':showinventory,'look':look,'test_soil':test_soil,'ener
 
 
 #this should be a dictinoary 'verb':verb/method
-verbs = {'pickup':pickup,'inventory':showinventory,'drop':drop,'loot':loot,'drill':drill}
+verbs = {'pickup':pickup,'inventory':showinventory,'drop':drop,'loot':loot,'drill':drill,'pull':pull}
 
 #add singleverbs to verbs
 verbs.update(singleverbs)

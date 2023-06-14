@@ -76,7 +76,7 @@ map_array[5][8].north = None
 map_array[6][8].north = None
 map_array[7][8].north = None
 #and the bridge
-map_array[5][8].west = None
+map_array[7][8].west = None
 
 
 
@@ -224,7 +224,7 @@ clearing, and to the east is a larger cave mouth leading outside. The alien is b
 
 def fishcave_update():
     fishcave.greeting = '''ROVER: There does not appear to be anything of value in this cave. To the west in the flat rock land, to the north through a small opening appears to be a flat 
-clearing, and to the east is a larger cave mouth leading outside. The remains on the alien lay here.'''
+clearing, and to the east is a larger cave mouth leading outside. '''
 
 #involked in drill in methods.py
 fishcave.update = fishcave_update
@@ -266,7 +266,7 @@ craterlipsouth.eventflag = True
 
 craterlipsouth.greeting = '''ROVER:We are at the souther lip of a very large crater. We are surrounded by a very dark, glassy residue that does not seem 
 familiar to this terrain. To the south is a flat with a topsoil layer composed of mostly salt. There does not seem to be anything of note to the east. To the north is the center of the crater
-and to the east is an endless abyss which I can not travel across.'''
+and to the west is an endless abyss which I can not travel across.'''
 
 craterlipsouth.inventory['alien'] = michael
 
@@ -276,7 +276,7 @@ def craterlipsouthevent():
         message = 'you do not have to do what all of your associates have done, you can save us. If you can ever find a way to listen to us you will find we can work together. better yet destroy those signal towers and leave us alone'
         message = encode(message)
 
-        yn = input('''ROVER: There appears to be an alien lifeform in the smoke. I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
+        yn = input('''ROVER: There appears to be an alien lifeform . I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
         
         if yn == 'y':
             print("\nExporting scan ....")
@@ -338,10 +338,86 @@ forestcenter.hasmineral = True
 foresteast = map_array[7][7]
 
 foresteast.greeting = '''ROVER: We are at the eastern edge of the forest. To the north and south is endless abyss which I can not travel across. To the west is the center of the forest. To the east is a massive cliff that I cannot travel across. 
-There appears to be a broken ROVER robot here overgrown with local shrubbery.'''
+There appears to be a broken ROVER robot here overgrown with local shrubbery. This is not a suitable site for excavation.'''
 foresteast.inventory['rover'] =  rover1
 
+#####Dark Cave Mouth - we need to make an alien NPC make it testable and suitable, and modify test_soil such that it doesnt work when there is a living alien in the locaiton's inventory
 
+darkmouth = map_array[4][8]
+darkmouth.eventflag = True
+
+darkmouth.greeting = '''ROVER:This is the mouth to a very dark cave. To the east there is a shallow descent further into this dark cave. I can not see the interior at all. 
+To the west there is nothing of note. To the north is the eastern border of the salt flat. To the south there is an endless abyss that I can not travel across. '''
+darkmouth.inventory['alien'] = jeremy
+
+def darkmouthevent():
+    
+    if 'alien' in darkmouth.inventory and jeremy.isalive == True:
+        message = 'you should not be here, the cave has a ravine and a bridge you can use to cross it, in the furthest depths there is one of your cursed signal towers, please destroy it and save us all '
+        message = encode(message)
+
+        yn = input('''ROVER: There appears to be an alien lifeform . I have taken a low resolution scan. Would you like me to print it on your device? y/n''')
+        
+        if yn == 'y':
+            print("\nExporting scan ....")
+            #we change this when we make michael's photo
+            open_image('roger.png')
+
+        print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
+        print("ROVER: Okay, here is a rough translation: {}".format(message))
+
+    else:
+        darkmouth.eventflag = False
+
+
+darkmouth.eventflag = True
+darkmouth.event = darkmouthevent
+
+##### darkcavelevel1
+
+darkcavelevel1 = map_array[5][8]
+darkcavelevel1.eventflag = True
+
+
+darkcavelevel1.greeting = '''ROVER:We are in a very dark cave, I can not see a single thing. To the west is the mouth of the cave where we can leave.'''
+
+def darkcavelevel1event():
+    if 'flashlight' in me.inventory:
+        darkcavelevel1.greeting = '''ROVER: Our flashlight is illuminating this extremely dark cave. To the west is the mouth of the cave where we can leave. To the east is a descent
+         further into the cave. To the north is a cave wall. '''
+        darkcavelevel1.eventflag = False
+        darkcavelevel1.inventory['crystal'] = crystal1
+
+darkcavelevel1.event = darkcavelevel1event
+
+
+
+### darkcave level2
+
+darkcavelevel2 = map_array[6][8]
+
+darkcavelevel2.eventflag = True
+
+darkcavelevel2.greeting = '''ROVER:We are further is this extremely dark cave. I still can not see a single thing at all. We should leave in the west direction before something bad happens.'''
+
+def darkcavelevel2event():
+    if 'flashlight' in me.inventory:
+        darkcavelevel2.greeting = '''ROVER: Our flashlight is illuminating this extremely dark cave. To the west is the first level of this cave. To the east I can see another deeper level, and
+          what appears to be some sort of tower. We can not reach it because there is a ravine, but it is not very large. To the north is a cave wall. '''
+        darkcavelevel2.eventflag = False
+        darkcavelevel2.inventory['lever'] = lever
+
+darkcavelevel2.event = darkcavelevel2event
+
+def level2update():
+    print("ROVER: A hidden bridge extended from underneath us and bridged the ravine. We can not go further east! ")
+    map_array[6][8].east = map_array[7][8]
+    map_array[7][8].west = map_array[6][8]
+    loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
+    darkcavelevel2.greeting = '''ROVER: Our flashlight is illuminating this extremely dark cave. To the west is the first level of this cave. To the east I can see another deeper level, and
+          what appears to be some sort of tower. The bridge is allowing us to travel east. To the north is a cave wall. '''
+
+darkcavelevel2.update = level2update
 
 
 

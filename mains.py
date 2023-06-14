@@ -52,6 +52,17 @@ while gamegoing:
     #     print("Congratualtions Associated Remote ROVER Engineer #{}, your missions was a success! You will now be disconnected from your ROVER. Please sign back on tomorrow at 7:00 am for your next assignment. ".format(idnumber))
     #     quit()
 
+#####################################TEST CONDITION AREA REMEMBER TO REMOVE AFTER USE##############################
+    me.inventory['flashlight'] = flashlight
+
+
+###################################################################################################################
+
+
+
+
+    #must update every time which is stupid
+    loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
 
 
     #CHANGE THIS, IF ME.LOCAITON.EVENTFLAG == TRUE THEN ME.LOCATION.EVENT
@@ -60,8 +71,7 @@ while gamegoing:
         me.location.event()
 
     
-    #must update every time which is stupid
-    loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
+    
 
     #show greeting for specific location that just entered
     
@@ -76,6 +86,7 @@ while gamegoing:
 
     #begin command loop
     while commanding:
+        loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
         
         #consider refresh / command tick method
         

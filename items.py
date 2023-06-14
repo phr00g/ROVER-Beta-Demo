@@ -42,3 +42,11 @@ star.greeting = 'There appears to be a star shaped trinket on the floor'
 flashlight = item('flashlight')
 flashlight.verbs['pickup'] = pickup
 flashlight.onpickupgreeting = 'We can use this to see in the dark!'
+
+
+#lever in level 2 of cave
+
+lever = item('lever')
+lever.verbs['pull'] = pull
+lever.verbs['use'] = pull
+lever.greeting = '''There is some sort of lever fixed agains the cave wall.'''
