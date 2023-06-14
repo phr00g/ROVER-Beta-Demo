@@ -36,3 +36,9 @@ star.verbs['give'] = give
 star.verbs['drop'] = drop
 star.isrelic = True
 star.greeting = 'There appears to be a star shaped trinket on the floor'
+
+#DEAD ROVER IN FOREST EAST HAS LIGHT AND ONE CRYSTAL
+
+flashlight = item('flashlight')
+flashlight.verbs['pickup'] = pickup
+flashlight.onpickupgreeting = 'We can use this to see in the dark!'

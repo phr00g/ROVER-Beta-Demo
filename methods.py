@@ -171,13 +171,18 @@ def give(gift):
         if gift.isrelic == True:
 
             #if we own the item, it is a relic, there is an alien, and it is alive, then invoke the alien's ongift method
-            if 'alien' in me.location.inventory and me.location.inventory['alien'].isalive == True:
+            if 'alien' in me.location.inventory and me.location.inventory['alien'].isalive == True and me.location.inventory['alien'].giftable == True:
                 me.location.inventory['alien'].ongift()
+                me.location.inventory['alien'].giftable = False
+
+            elif 'alien' in me.location.inventory and me.location.inventory['alien'].isalive == True and me.location.inventory['alien'].giftable == False:
+                print("ROVER:The alien will not accept the {}.".format(gift.name))
+            
             else:
                 print("ROVER:There is no individual here to give the {} to.".format(gift.name))
 
         else:
-            print("ROVER:This doesn't seem like the time of thing to give to another individual.")
+            print("ROVER:This doesn't seem like the type of thing to give to another individual.")
 
     else:
         print("ROVER:To give something it must be in our possesion.")

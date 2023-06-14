@@ -313,22 +313,34 @@ composed of some sort of cellulose. To the south is the mouth of a cave that app
 
 forestentrance = map_array[5][7]
 
-
 forestentrance.inventory['tree'] = tree
 
 forestentrance.greeting = '''ROVER:This is the mouth of a large forest of trees. They are made of cellulose but beyond that I am not sure. To the west is
     the salt flat. To the north there is nothing of interest. To the east is deeper, more dense forest.'''
 
-
-
-
 def entranceupdate():
     print("ROVER: After drilling the very large tree it fell, and a star shaped trinket fell on the floor. It appeears to be some sort of relic.")
     forestentrance.inventory['star'] = star
 
-
 forestentrance.update = entranceupdate
-    
+
+#### Cellulose Forest Centeer########### suitable
+
+forestcenter = map_array[6][7]
+
+forestcenter.greeting = '''ROVER:We are at the center of this forest. It is very dense with trees and brush, there is very little light here. TO the north is an endless abyss which I can
+not travel across. To the west is the entrance to this forest. To the east is more forest, although it is less dense. To the south is an endless abyss which I cannot travel across.'''
+forestcenter.istestable = True
+forestcenter.hasmineral = True
+
+######################FOREST EAST WITH DEAD ROVER THAT HAS LIGHT ## MAKE LIGHT THEN MAKE DEAD ROVER NPC THEN ADD TO NPC INVENTORY
+
+foresteast = map_array[7][7]
+
+foresteast.greeting = '''ROVER: We are at the eastern edge of the forest. To the north and south is endless abyss which I can not travel across. To the west is the center of the forest. To the east is a massive cliff that I cannot travel across. 
+There appears to be a broken ROVER robot here overgrown with local shrubbery.'''
+foresteast.inventory['rover'] =  rover1
+
 
 
 

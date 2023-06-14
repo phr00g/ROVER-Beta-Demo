@@ -121,7 +121,7 @@ while gamegoing:
             
             pass
         else:
-            print("You are gonna have to start with a verb kiddo...")
+            print("ROVER:I can only understand commands that start with a verb.")
             continue
         
 

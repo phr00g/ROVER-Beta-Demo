@@ -9,8 +9,7 @@ class person:
         self.minerals = 0
         self.wincondition = False
         self.energy = 3
-        #must add to distinguish between person and item
-        self.isalive = True
+        
 
     
 
@@ -78,6 +77,9 @@ class NPC(person):
         self.verbs = {}
         self.deathscream = ''''''
         self.greeting = ""
+        self.giftable = True
+        #must add to distinguish between person and item
+        self.isalive = True
 
     def ongift(self):
         pass
