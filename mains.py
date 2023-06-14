@@ -64,7 +64,9 @@ while gamegoing:
     loc_dict = {'west':me.location.west,'east':me.location.east, 'north':me.location.north, 'south':me.location.south}
 
     #show greeting for specific location that just entered
-    print(me.location.greeting) 
+    
+    #if there are items in location, print their greeting so we dont forget their existence -- add this to look 
+    look()
     
     #now that we have visitied with location, its firstime attribtue is false and must stay that way
     me.location.firsttime = False

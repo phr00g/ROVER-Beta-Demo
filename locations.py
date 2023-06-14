@@ -108,11 +108,27 @@ map_array[1][3].west = None
 map_array[1][3].east = None
 map_array[1][3].south = None
 
+#top right corner sleeping giant
+map_array[7][1].north = None
 
 
 
 
+#adding minerals to correct sites
+map_array[7][0].hasmineral = True
+map_array[7][0].istestable = True
 
+
+map_array[4][8].hasmineral = True
+map_array[4][8].istestable = True 
+
+
+map_array[6][7].hasmineral = True
+map_array[6][7].istestable = True
+
+
+map_array[1][3].hasmineral = True
+map_array[1][3].istestable = True
 
 
 
@@ -152,23 +168,17 @@ for row in map_array:
 landing =map_array[3][4]
 landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
 to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
-To the south is the center of a massive crater.    There appears to be an energy crystal on the floor'''
+To the south is the center of a massive crater. To the west is a large abyss which I can not travel across'''    #There appears to be an energy crystal on the floor'''
 
 landing.desc = "your landing site"
 
-#update method when we want to REMOVE part of greeting string and do other stuff, locations get updated when items are picked up
-def landing_update():
-    landing.greeting = '''ROVER: This is your landing dock. This is not a suitable testing site. The land is flat with a thin layer of orange dust. To the north there appears 
-to be a more flat rockland and a low vibrating hum. To the east is a large hill with a gray metallic sheen.
-To the south is the center of a massive crater. '''
 
-landing.update = landing_update
 
 #crater###########
 
 crater = map_array[3][5]
 crater.greeting = '''ROVER:You are at the center of a very large crater. This must be the result of some sort of interplanetary collision. To the south is an ascent to the southern
-lip of the crater. To the east is an ascent to the eastern lip of the crater. The landing dock is to the north.'''
+lip of the crater. To the east is an ascent to the eastern lip of the crater. The landing dock is to the north. To the west is a large abyss which I cannot travel across. '''
 crater.istestable = True
 
 #flatrock area w rumble
@@ -255,12 +265,13 @@ craterlipsouth = map_array[3][6]
 craterlipsouth.eventflag = True
 
 craterlipsouth.greeting = '''ROVER:We are at the souther lip of a very large crater. We are surrounded by a very dark, glassy residue that does not seem 
-familiar to this terrain. '''
+familiar to this terrain. To the south is a flat with a topsoil layer composed of mostly salt. There does not seem to be anything of note to the east. To the north is the center of the crater
+and to the east is an endless abyss which I can not travel across.'''
 
 craterlipsouth.inventory['alien'] = michael
 
 def craterlipsouthevent():
-    print(1111111)
+    
     if 'alien' in craterlipsouth.inventory and michael.isalive == True:
         message = 'you do not have to do what all of your associates have done, you can save us. If you can ever find a way to listen to us you will find we can work together. better yet destroy those signal towers and leave us alone'
         message = encode(message)
@@ -283,6 +294,41 @@ craterlipsouth.eventflag = True
 craterlipsouth.event = craterlipsouthevent
 
 
+#####salt flat center################
+saltcenter = map_array[3][7]
+saltcenter.istestable = True
+saltcenter.hasmineral = True
+
+saltcenter.greeting = '''ROVER: We are in the middle of a salt flat. The wind has formed some dunes, but otherwise there is not much of note. To the north is the southern
+lip of the crater. To the west and to the east are more of the same salt flat. To the south there is a clearing with nothing noteworthy.'''
+
+####salt flat east
+
+salteast = map_array[4][7]
+salteast.greeting = '''ROVER:This is simply another salt flat. Fewer dunes than the salt flat to the west. To the east is the beginning of a forest
+composed of some sort of cellulose. To the south is the mouth of a cave that appears very dark. To the east there is more of the same salt flat. '''
+
+
+#### Cluulose FOrest Entrance with large tree holding alien
+
+forestentrance = map_array[5][7]
+
+
+forestentrance.inventory['tree'] = tree
+
+forestentrance.greeting = '''ROVER:This is the mouth of a large forest of trees. They are made of cellulose but beyond that I am not sure. To the west is
+    the salt flat. To the north there is nothing of interest. To the east is deeper, more dense forest.'''
+
+
+
+
+def entranceupdate():
+    print("ROVER: After drilling the very large tree it fell, and a star shaped trinket fell on the floor. It appeears to be some sort of relic.")
+    forestentrance.inventory['star'] = star
+
+
+forestentrance.update = entranceupdate
+    
 
 
 
@@ -295,22 +341,6 @@ craterlipsouth.event = craterlipsouthevent
 
 
 
-
-#adding minerals to correct sites
-map_array[7][0].hasmineral = True
-map_array[7][0].istestable = True
-
-
-map_array[4][8].hasmineral = True
-map_array[4][8].istestable = True 
-
-
-map_array[6][7].hasmineral = True
-map_array[6][7].istestable = True
-
-
-map_array[1][3].hasmineral = True
-map_array[1][3].istestable = True
 
 
 #add all items

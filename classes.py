@@ -64,6 +64,8 @@ class item:
         self.directobjects = {} #
         self.iscrystal = False
         self.isalive = False
+        self.isrelic = False
+        self.greeting = ""
 
 
 
@@ -75,6 +77,10 @@ class NPC(person):
         
         self.verbs = {}
         self.deathscream = ''''''
+        self.greeting = ""
+
+    def ongift(self):
+        pass
         
 
 

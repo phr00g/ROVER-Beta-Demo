@@ -27,7 +27,7 @@ def pickup(item): #item is an object from item class
     #remove item from location
     me.location.inventory.pop(item.name)
     
-    me.location.update()
+    
     
     
 
@@ -67,6 +67,9 @@ def showinventory():
 
 def look():
     print(me.location.greeting)
+
+    for values in me.location.inventory.values():
+        print(values.greeting)
 
 def nullverb(): #this method is for verbs we want to recognize as reasonable but can not be done, 
                 #for the sake of adding verb to verbs dictinoary:  'nullverb' : nullverb
@@ -119,6 +122,9 @@ def test_soil():
     else:
         print("You have no energy to drill!")
 
+def minerals():
+    print("ROVER: So far we have found {} sites that are suitable for excavation.".format(me.minerals))
+
 
 
 def energy():
@@ -148,6 +154,27 @@ def loot(deadguy):
 
 
 
+#gift is either in location or our inventory
+def give(gift):
+
+    if gift in me.inventory:
+
+        if gift.isrelic == True:
+
+            #if we own the item, it is a relic, there is an alien, and it is alive, then invoke the alien's ongift method
+            if 'alien' in me.location.inventory and me.location.inventory['alien'].isalive == True:
+                me.location.inventory['alien'].ongift()
+            else:
+                print("ROVER:There is no individual here to give the {} to.".format(gift.name))
+
+        else:
+            print("ROVER:This doesn't seem like the time of thing to give to another individual.")
+
+    else:
+        print("ROVER:To give something it must be in our possesion.")
+
+
+
 #so far can only handle drillign people
 def drill(itemperson):
     #if the thing is a person
@@ -159,6 +186,15 @@ def drill(itemperson):
         itemperson.isalive =False
         itemperson.verbs.pop('drill')
         itemperson.verbs['loot'] = loot
+
+    #if its just an item, then remove it from the location
+    else:
+        me.location.inventory.pop(itemperson.name)
+
+
+    #cost 1 energy for drilling
+    me.energy -= 1
+    #what you want to happen after drilling occurs
     me.location.update()
 
 
@@ -171,7 +207,7 @@ def drill(itemperson):
 #verbs are methods, all verbs should be defined above ----------------------------------------------------------------------------------------------
 
 #need single verbs dictionary
-singleverbs = {'inventory':showinventory,'look':look,'test_soil':test_soil,'energy':energy}
+singleverbs = {'inventory':showinventory,'look':look,'test_soil':test_soil,'energy':energy,'progress':minerals}
 
 
 
