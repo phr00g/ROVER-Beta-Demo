@@ -306,7 +306,7 @@ lip of the crater. To the west and to the east are more of the same salt flat. T
 
 salteast = map_array[4][7]
 salteast.greeting = '''ROVER:This is simply another salt flat. Fewer dunes than the salt flat to the west. To the east is the beginning of a forest
-composed of some sort of cellulose. To the south is the mouth of a cave that appears very dark. To the east there is more of the same salt flat. '''
+composed of some sort of cellulose. To the south is the mouth of a cave that appears very dark.  '''
 
 
 #### Cluulose FOrest Entrance with large tree holding alien

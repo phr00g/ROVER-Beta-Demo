@@ -82,6 +82,8 @@ while gamegoing:
         command = input("EXECUTE COMMAND:").lower()
         print('\n')
         command = command.split()
+        if len(command) == 0:
+            continue
         verb = command[0]
 
                

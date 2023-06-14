@@ -13,19 +13,32 @@ def open_image(file_name):
 
 #ALL VERB METHODS GO BELOW : PUBLIC METHODS PRIVATE ABOVE
 
+
+
+
+def energy():
+    if me.energy >= 1:
+        print("ROVER:You have {} energy!".format(me.energy))
+
+    else:
+        print("ROVER:You are completely out of energy! Explore around and find an energy crystal so you can proceeed with your mission!")
+
 def pickup(item): #item is an object from item class
 
-    
-    if item.iscrystal == False:
-        #add item from location to inventory
-        me.inventory[item.name] = me.location.inventory[item.name]
-        print(item.onpickup)
+    if item in me.location.inventory.values():
+        if item.iscrystal == False:
+            #add item from location to inventory
+            me.inventory[item.name] = me.location.inventory[item.name]
+            print(item.onpickup)
+        else:
+            me.energy += 1
+            print("You now have {} energy!".format(me.energy))
+        
+        #remove item from location
+        me.location.inventory.pop(item.name)
+
     else:
-        me.energy += 1
-        print("You now have {} energy!".format(me.energy))
-    
-    #remove item from location
-    me.location.inventory.pop(item.name)
+        print("ROVER: Can't pickup {}".format(item.name))
     
     
     
@@ -94,6 +107,7 @@ def test_soil():
                 me.location.hasbeentested == True
                 print("You have tested and found this site suitable for excavation! Good job!")
                 me.location.greeting += "You have tested and found this site suitable for excavation! Good job!"
+                energy()
 
                 me.minerals += 1
 
@@ -127,12 +141,7 @@ def minerals():
 
 
 
-def energy():
-    if me.energy >= 1:
-        print("ROVER:You have {} energy!".format(me.energy))
 
-    else:
-        print("ROVER:You are completely out of energy! Explore around and find an energy crystal so you can proceeed with your mission!")
 #we wh
 def loot(deadguy):
     if deadguy.isalive == False:
@@ -194,6 +203,8 @@ def drill(itemperson):
 
     #cost 1 energy for drilling
     me.energy -= 1
+    #show how much energy we have
+    energy()
     #what you want to happen after drilling occurs
     me.location.update()
 

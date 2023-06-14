@@ -33,5 +33,6 @@ tree.greeting = 'There is a noteworthy tree here within reach, it is by far the 
 star = item('star')
 star.verbs['pickup'] = pickup
 star.verbs['give'] = give
+star.verbs['drop'] = drop
 star.isrelic = True
 star.greeting = 'There appears to be a star shaped trinket on the floor'
