@@ -1,6 +1,5 @@
 this version introduces threading, global scope, pygame, and the map system
 
-worst case, in failure of git, go to pygame111 or pygame111\clone
 
 we use threading to run pygame in parrallel with the game and command loop
 the pygame loop is a daemon 'background' process that is only able to use variables across the project when they are globalized: thus far only me.location bin classes.py and map_array in locations
