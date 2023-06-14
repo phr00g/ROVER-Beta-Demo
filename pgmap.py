@@ -22,14 +22,14 @@ def pygo():
     space_size = 10
 
     # Define colors
-    WHITE = (249, 244, 245)
-    RED = (255, 0, 0)
-    BLUE = (0, 0, 255)
-    BLACK = (46, 49, 56)
+    WHITE = (247, 255, 247)
+    RED = (255, 107, 107)
+    BLUE = (78, 205, 196)
+    BLACK = (102, 78, 76)
 
     # Create a Pygame window
     window = pygame.display.set_mode((window_width, window_height))
-    pygame.display.set_caption("Game Map")
+    pygame.display.set_caption("ROVER Map Grid")
     clock = pygame.time.Clock()
     running = True
     window.fill(BLACK)

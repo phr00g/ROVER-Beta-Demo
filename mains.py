@@ -98,7 +98,7 @@ while gamegoing:
         
         #consider refresh / command tick method
         
-        command = input("EXECUTE COMMAND:").lower()
+        command = input("\nEXECUTE COMMAND:").lower()
         print('\n')
         command = command.split()
         if len(command) == 0:
@@ -118,7 +118,7 @@ while gamegoing:
 
             # me.location.west == None
             if command[1] not in loc_dict  or loc_dict[command[1]] == None :
-                print("You can not go {}".format(command[1]))
+                print("You can not go {} \n".format(command[1]))
                 
                 if command[1] in me.location.whynot:
                     print(me.location.whynot[command[1]])

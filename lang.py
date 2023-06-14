@@ -17,3 +17,5 @@ def encode(message):
     for char in message:
         encoded += encodeDict[char]
     return encoded
+
+

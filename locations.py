@@ -281,7 +281,7 @@ def craterlipsouthevent():
         if yn == 'y':
             print("\nExporting scan ....")
             #we change this when we make michael's photo
-            open_image('roger.png')
+            open_image('michael.jpg')
 
         print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
         print("ROVER: Okay, here is a rough translation: {}".format(message))
@@ -361,7 +361,7 @@ def darkmouthevent():
         if yn == 'y':
             print("\nExporting scan ....")
             #we change this when we make michael's photo
-            open_image('roger.png')
+            open_image('jeremy.jpg')
 
         print("ROVER: It appears that it is attempting to use some crude for of communication. I will observe and translate.")
         print("ROVER: Okay, here is a rough translation: {}".format(message))
@@ -420,11 +420,44 @@ def level2update():
 darkcavelevel2.update = level2update
 
 
+#############obelisk2 wti rover spec sheet#################
+
+## OBELISK NUMBER 1
+obelisk2 = map_array[0][6] 
+obelisk2.eventflag = True
+
+def obelisk2event():
+    print("ROVER: There is a very large obelisk made from an array of local.....")
+    print("Signal disrupted please wait....")
+    opened = webbrowser.open('https://speclist.s3.us-west-2.amazonaws.com/index.html')
+    print("....materials and sediments. It is crude and unsightly. ")
+    #add rest of greeting here just cause
+    print('''ROVER:To the south appers to be an expanes of very flat concrete, to the west is an endless abyss that I can not travel across, to the east is a
+    volcanic formation that is leading to the crest of a volcano. To the north is another ascent to the top of the volcano. 
+    . ''')
+
+obelisk2.event = obelisk2event
+
+#####################################
 
 
+#####TEMPLE TRANSLATION TEST FOR DEMO ONLY####################
 
+DEMOSITE = map_array[7][4]
 
+DEMOSITE.eventflag = True
 
+def DEMOSITEEVENT():
+    print("ROVER: There is a very large obelisk made from an array of local.....")
+    print("Signal disrupted please wait....")
+    #opened = webbrowser.open('https://speclist.s3.us-west-2.amazonaws.com/index.html')
+    opened = webbrowser.open('index.html')
+    print("....materials and sediments. It is crude and unsightly. ")
+    #add rest of greeting here just cause
+    print('''ROVER: We are at the center of some sort of temple. The northern and western quaters lay accordingly. The temple continues south but has some fog. 
+    . ''')
+
+DEMOSITE.event = DEMOSITEEVENT
 
 
 
@@ -439,6 +472,15 @@ landing.inventory['crystal'] = crystal1
 
 
 
+##adding crystal1 indiscriminatnyl for demo reasons
+
+map_array[2][8].inventory['crystal'] = crystal1
+
+map_array[4][0].inventory['crystal'] = crystal1
+
+map_array[0][2].inventory['crystal'] = crystal1
+
+map_array[7][2].inventory['crystal'] = crystal1
 
 
 
